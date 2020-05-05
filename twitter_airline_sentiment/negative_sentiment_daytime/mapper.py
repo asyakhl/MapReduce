@@ -2,19 +2,18 @@
 """mapper.py"""
 
 import sys
+import csv
+import re
 from datetime import datetime
 # input comes from STDIN (standard input)
 infile = sys.stdin
 next(infile)
-for line in infile:
-    # remove leading and trailing whitespace
-    line = line.strip()
-    # split the line into words
-    data = line.split(",")
+for line in csv.reader(iter(infile)):
+    data = line
     if data[1].strip() == "negative":
-    	time = data[12].strip().split("  ")
+    	time = re.split(" |  ", data[12].strip())
     	time = time[1].strip()
-    	am_pm_time = datetime.strptime(time, "%I:%M:%S %p")
+    	am_pm_time = datetime.strptime(time, "%H:%M:%S")
     	twenty_four_hour_time = datetime.strftime(am_pm_time, "%H:%M:%S")
     	time = int(twenty_four_hour_time.replace(":", ""))
     else:

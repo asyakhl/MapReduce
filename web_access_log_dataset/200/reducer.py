@@ -32,6 +32,6 @@ for line in sys.stdin:
         current_count_afternoon += count
             # write result to STDOUT
 print '%s\t%s' % ("200", current_count)
-print '%s\t%s' % ("not 200" current_count_afternoon)  
+print '%s\t%s' % ("not 200", current_count_afternoon)  
 
 

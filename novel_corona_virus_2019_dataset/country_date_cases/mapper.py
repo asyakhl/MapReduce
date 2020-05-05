@@ -2,21 +2,19 @@
 """mapper.py"""
 
 import sys
+import csv
 from datetime import datetime
 # input comes from STDIN (standard input)
 infile = sys.stdin
 next(infile)
-for line in infile:
-    # remove leading and trailing whitespace
-    line = line.strip()
-    # split the line into words
-    data = line.split(",")
+for line in csv.reader(iter(infile)):
+    data = line
     country = data[3].strip()
     date = data[1].strip()
-    date = datetime.strptime(date, "%d/%m/%y")
-    date = datetime.strftime(date, "%d:%m:%y")
+    date = datetime.strptime(date, "%m/%d/%Y")
+    date = datetime.strftime(date, "%m:%d:%Y")
     key = "_".join(list([country,date]))
-    confirmed = int(data[5])
+    confirmed = int(float(data[5]))
     print '%s\t%s' % (key, confirmed)
 
             

@@ -14,7 +14,7 @@ for line in infile:
    
     webpage = data[2].partition("/")[2].strip()
     
-    if "HTTP" not in website:
+    if "HTTP" not in webpage:
         continue
     else:
         print '%s\t%s' % (webpage, 1)

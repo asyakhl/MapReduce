@@ -12,7 +12,6 @@ word = None
 for line in sys.stdin:
     # remove leading and trailing whitespace
     line = line.strip()
-
     # parse the input we got from mapper.py
     word, count = line.split('\t', 1)
 

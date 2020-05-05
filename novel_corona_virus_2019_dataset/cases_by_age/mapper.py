@@ -2,15 +2,14 @@
 """mapper.py"""
 
 import sys
+import csv
 from datetime import datetime
 # input comes from STDIN (standard input)
 infile = sys.stdin
 next(infile)
-for line in infile:
-    # remove leading and trailing whitespace
-    line = line.strip()
-    # split the line into words
-    data = line.split(",")
+for line in csv.reader(iter(infile)):
+
+    data = line
     try:
     	age = int(data[8].strip())
     except ValueError:

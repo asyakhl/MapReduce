@@ -2,18 +2,15 @@
 """mapper.py"""
 
 import sys
-from datetime import datetime
+import csv
 # input comes from STDIN (standard input)
 infile = sys.stdin
 next(infile)
-for line in infile:
-    # remove leading and trailing whitespace
-    line = line.strip()
-    # split the line into words
-    data = line.split(",")
+for line in csv.reader(iter(infile)):
+    data = line
     try:
-    	died = int(data[6].strip())
-        recovered = int(data[7].strip())
+        died = int(float(data[6].strip()))
+        recovered = int(float(data[7].strip()))
     except ValueError:
         continue
     
